@@ -1,0 +1,17 @@
+name: mediawiki
+version: 0.1.0
+
+authors:
+  - Chris Larsen <clarsendev@protonmail.com>
+
+development_dependencies:
+  minitest:
+    github: ysbaddaden/minitest.cr
+    version: "1.0.1"
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
+
+crystal: 1.0.0
+
+license: MIT
