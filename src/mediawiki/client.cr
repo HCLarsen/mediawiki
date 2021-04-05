@@ -50,13 +50,12 @@ module Wikipedia
       Wikipedia::Category.from_json(categorymembers.to_json)
     end
 
-    def get_category_members(params : Hash(String, String)) : Array(JSON::Any)
+    private def get_category_members(params : Hash(String, String)) : Array(JSON::Any)
       json = get(params)
       parsed_list = json["query"]["categorymembers"].as_a
 
       if continue = json["continue"]?
         new_params = params
-        # continue.as_h.each { |k, v| new_params[k] = v.to_s }
         new_params["cmcontinue"] = continue["cmcontinue"].to_s
         parsed_list += get_category_members(new_params)
       end
@@ -64,7 +63,7 @@ module Wikipedia
       parsed_list
     end
 
-    def get(params : Hash(String, String)) : JSON::Any
+    private def get(params : Hash(String, String)) : JSON::Any
       url = "https://#{@base_url}/w/api.php?" + URI::Params.encode(params)
 
       response = HTTP::Client.get(url)
