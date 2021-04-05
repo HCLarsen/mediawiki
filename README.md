@@ -2,7 +2,7 @@
 
 Wrapper for the [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page)
 
-Note: The MediaWiki API is very extensive, and the full scope is beyond what I have free time for. Contributions are very welcome.
+**Note:** The MediaWiki API is very extensive, and the full scope is beyond what I have free time for. Contributions are very welcome.
 
 ## Installation
 
@@ -26,10 +26,7 @@ TODO: Write usage instructions here
 
 ## Development
 
-1. Add Page class.
-2. Add Category class, testing with Aluminium compounds to ensure "continue" functionality.
-3. Add Client class.
-4. Add follow redirect flag to Client.get_page method that defaults to true.
+1. Add classes and methods for other API endpoints.
 
 ## Contributing
 
