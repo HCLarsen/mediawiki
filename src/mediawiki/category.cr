@@ -8,6 +8,7 @@ module Wikipedia
     @categorymembers : Array(NamedTuple(title: String, ns: Int32, pageid: Int32))
     @pages : Array(NamedTuple(title: String, ns: Int32, pageid: Int32))?
     @subcategories : Array(NamedTuple(title: String, ns: Int32, pageid: Int32))?
+    @files : Array(NamedTuple(title: String, ns: Int32, pageid: Int32))?
 
     def pages
       @pages ||= @categorymembers.select { |e| e[:ns] == 0 }
@@ -15,6 +16,10 @@ module Wikipedia
 
     def subcategories
       @subcategories ||= @categorymembers.select { |e| e[:ns] == 14 }
+    end
+
+    def files
+      @files ||= @categorymembers.select { |e| e[:ns] == 6 }
     end
   end
 end
