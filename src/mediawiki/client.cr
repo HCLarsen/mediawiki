@@ -6,6 +6,10 @@ require "./page"
 module Wikipedia
   class Client
     BASE_URL = "https://en.wikipedia.org/w/api.php"
+
+    @base_url : String
+    def initialize(@base_url : String); end
+
     def get_page(name : String) : Wikipedia::Page
       params = {
         "action" => "query",
@@ -61,7 +65,7 @@ module Wikipedia
     end
 
     def get(params : Hash(String, String)) : JSON::Any
-      url = BASE_URL + "?" + URI::Params.encode(params)
+      url = "https://#{@base_url}/w/api.php?" + URI::Params.encode(params)
 
       response = HTTP::Client.get(url)
       json = JSON.parse(response.body)

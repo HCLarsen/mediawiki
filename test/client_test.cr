@@ -7,13 +7,20 @@ require "./webmocks.cr"
 class ClientTest < Minitest::Test
   def initialize(args)
     super(args)
-    @client = Wikipedia::Client.new
+    @client = Wikipedia::Client.new("en.wikipedia.org")
   end
 
   def test_gets_page
     page = @client.get_page("Cementite")
 
     assert_equal "Cementite", page.title
+  end
+
+  def test_gets_page_from_wikibooks
+    @client = Wikipedia::Client.new("en.wikibooks.org")
+
+    page = @client.get_page("Main Page")
+    assert_equal "Main Page", page.title
   end
 
   def test_gets_category_info

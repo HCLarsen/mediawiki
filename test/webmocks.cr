@@ -10,4 +10,6 @@ WebMock.stub(:get, "https://en.wikipedia.org/w/api.php?action=query&prop=revisio
 
 WebMock.stub(:get, "https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category%3AIron+compounds&cmlimit=500&format=json&formatversion=2").to_return(status: 200, body: File.read("test/files/iron-compounds.json"))
 
+WebMock.stub(:get, "https://en.wikibooks.org/w/api.php?action=query&prop=revisions%7Ccategories&titles=Main+Page&rvslots=main&rvprop=content&format=json&formatversion=2").to_return(status: 200, body: File.read("test/files/wikibooks.json"))
+
 # WebMock.stub(:get, "").to_return(status: 200, body: File.read("test/files/.json"))
