@@ -20,9 +20,18 @@ Wrapper for the [MediaWiki API](https://www.mediawiki.org/wiki/API:Main_page)
 
 ```crystal
 require "mediawiki"
+
+client = Wikipedia::Client.new("en.wikipedia.org")
+
+page = client.get_page("Cementite")
+page.title  #=> "Cementite"
 ```
 
-TODO: Write usage instructions here
+```crystal
+category = client.get_category("Iron compounds")
+
+category.pages.size #=> 105
+```
 
 ## Development
 
